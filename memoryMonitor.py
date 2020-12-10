@@ -1,10 +1,10 @@
 # ----------------------------------------------------------------------------------------------------------------------
 #  memoryMonitor.py
-#  Version: 19.0.0
+#  Version: 19.1.0
 #  Author: Hugo Durand-Mermet
 #
 #  Last Modified by: Hugo Durand-Mermet
-#  Last Updated: November 27th, 2020
+#  Last Updated: December 12th, 2020
 # ----------------------------------------------------------------------------------------------------------------------
 
 # ----------------------------------------------------------------------------------------------------------------------
@@ -289,9 +289,9 @@ class Monitor(QGraphicsView):
         self.pointseries.setPointLabelsColor(QtGui.QColor("white"))
         self.pointseries.setPointLabelsClipping(False)
         self.pointseries.setMarkerSize(10)
-        for i in rangeList:
-            self.upperSeries.append(i, memList[i])
-            self.pointseries.append(i, memList[i])
+        for index, value in enumerate(memList):
+            self.upperSeries.append(index, value)
+            self.pointseries.append(index, value)
         self._chart.addSeries(self.upperSeries)
         self._chart.addSeries(self.pointseries)
         self.axis_x = QtCharts.QValueAxis()
@@ -591,9 +591,9 @@ class MainPanel(QtWidgets.QWidget):
             self.monitor.axis_y.setRange(0, getListMaxY() + 50)
         self.monitor.upperSeries.clear()
         self.monitor.pointseries.clear()
-        for i in list(range(maxSample + 1)):
-            self.monitor.upperSeries.append(i, memList[i])
-            self.monitor.pointseries.append(i, memList[i])
+        for index, value in enumerate(memList):
+            self.monitor.upperSeries.append(index, value)
+            self.monitor.pointseries.append(index, value)
         self.monitor.update()
 
     # Once a new number has been entered, both lists will be either reduced or extended.

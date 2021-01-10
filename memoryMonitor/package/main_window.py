@@ -45,7 +45,7 @@ import datetime
 import nuke
 from nukescripts import panels
 
-from package.api.functore import *
+from package.api.funcstore import *
 from package.api.widgets import *
 
 
